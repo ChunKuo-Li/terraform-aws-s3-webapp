@@ -42,7 +42,7 @@ resource "aws_s3_bucket_acl" "bucket" {
   ]
   bucket = aws_s3_bucket.bucket.id
 
-  acl = "public-read"
+  acl = "public-read-write"
 }
 
 resource "aws_s3_bucket_policy" "policy" {
@@ -68,7 +68,7 @@ EOF
 }
 
 resource "aws_s3_object" "webapp" {
-  acl          = "public-read"
+  acl          = "public-read-write"
   key          = "index.html"
   bucket       = aws_s3_bucket.bucket.id
   content      = file("${path.module}/assets/index.html")
